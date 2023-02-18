@@ -1,0 +1,54 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model Musteri
+
+<h3> Müşteri Ekle </h3>
+
+@if (ViewBag.HataVarMi == true)
+{
+    <div class="alert alert-danger mt-3" role="alert">
+        Lütfen zorunlu alanları doldurun
+    </div>
+}
+
+<form class="mt-3" action="/Home/Index" method="post">
+    <div asp-validation-summary="All"></div>
+    <div class="mb-3">
+        <label class="form-label">Adı *</label>
+        <input type="text" class="form-control" asp-for="Adi">
+        @*<span asp-validation-for="Adi" class="text-danger"></span>*@
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Adresi</label>
+        <textarea rows="10" class="form-control" asp-for="Adresi"></textarea>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Ülke</label>
+        <select asp-for="Ulke" class="form-control">
+            <option value="Türkiye">Türkiye</option>
+            <option value="Almanya">Almanya</option>
+            <option value="Amerika">Amerika</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Email *</label>
+        <input type="text" class="form-control" asp-for="Email">
+        @*<span asp-validation-for="Email" class="text-danger"></span>*@
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Kayıt Tarihi</label>
+        <input type="date" class="form-control" asp-for="KayitTarihi">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Sipariş Sayısı *</label>
+        <input type="number" class="form-control" asp-for="SiparisSayisi">
+    </div>
+    <button type="submit" class="btn btn-primary">Kaydet</button>
+</form>
+
+@section Scripts {
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+}
